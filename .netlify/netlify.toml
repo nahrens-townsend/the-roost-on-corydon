@@ -1,13 +1,13 @@
+redirectsOrigin = "config"
 plugins = []
 headers = []
-redirects = []
 
 [functions]
 
 [functions."*"]
 
 [build]
-publish = "C:\\Users\\natha\\Desktop\\main\\Projects\\landscaping-2026-04-28\\frontend\\dist"
+publish = "C:\\Users\\natha\\Desktop\\main\\Projects\\template\\frontend\\dist"
 publishOrigin = "ui"
 commandOrigin = "ui"
 command = "npm run build"
@@ -25,3 +25,15 @@ command = "npm run build"
 [build.processing.js]
 
 [build.services]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]

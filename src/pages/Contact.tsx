@@ -1,7 +1,6 @@
 import ContactSection from "@/components/sections/ContactSection";
 import DirectionsSection from "@/components/sections/DirectionsSection";
 import PageHero from "@/components/sections/PageHero";
-import heroImg from "@/assets/images/the-roost-hero.jpg";
 
 export default function Contact() {
   return (

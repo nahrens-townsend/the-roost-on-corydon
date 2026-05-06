@@ -1,10 +1,6 @@
 import styles from "./HeroSlider.module.scss";
-import heroImg from "@/assets/images/roost-hero-2.webp";
-
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&q=80&auto=format&fit=crop";
-
-const HERO_IMAGE_2 = heroImg;
 
 type Props = {
   id?: string;

@@ -4,10 +4,6 @@ import Footer from "@/components/layout/Footer";
 import Home from "@/pages/Home";
 import Contact from "@/pages/Contact";
 import Story from "@/pages/Story";
-import Services from "@/pages/Services";
-import GardenDesign from "@/pages/GardenDesign";
-import Hardscapes from "@/pages/Hardscapes";
-import TreeServices from "@/pages/TreeServices";
 import Menu from "@/pages/Menu";
 
 function App() {
