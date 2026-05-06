@@ -19,6 +19,7 @@
 .leftImage {
   min-height: 400px;
   overflow: hidden;
+  order: 2;
 
   img {
     width: 100%;
@@ -29,6 +30,7 @@
 
   @include mix.respond-to("lg") {
     min-height: 0;
+    order: 1;
   }
 }
 
@@ -43,9 +45,11 @@
   padding: vars.$space-16 vars.$space-8;
   text-align: center;
   background-color: vars.$color-background-parchment;
+  order: 1;
 
   @include mix.respond-to("lg") {
     padding: vars.$space-20 vars.$space-16;
+    order: 2;
   }
 }
 
@@ -91,9 +95,8 @@
 }
 
 .teamRightImage {
-  min-height: 400px;
   overflow: hidden;
-  order: 1;
+  display: none;
 
   img {
     width: 100%;
@@ -103,6 +106,7 @@
   }
 
   @include mix.respond-to("lg") {
+    display: block;
     order: 2;
     min-height: 0;
     max-height: 85vh;
@@ -140,7 +144,10 @@
   user-select: none;
 
   @include mix.respond-to("lg") {
-    display: none;
+    display: block;
+    top: 0%;
+    left: 25%;
+    width: 70px;
   }
 }
 

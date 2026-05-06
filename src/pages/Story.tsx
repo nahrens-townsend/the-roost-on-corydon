@@ -118,15 +118,13 @@ export default function Story() {
             <strong>Our team is the heartbeat behind the bar</strong> — a small,
             ever-evolving group of curious minds, kind souls, and quietly
             obsessive makers. We're bartenders, hosts, cooks, artists, and
-            listeners. Some of us have been here for years, others just arrived,
-            but we all share the same instinct: to take care of people.
+            listeners, all driven by the same instinct: to take care of people.
           </p>
           <p className={styles.description}>
-            We spend our days tasting, testing, sketching, and reworking — not
-            just cocktails, but the experience itself. Every menu, every plate,
-            every detail is shaped by the people behind it. We challenge each
-            other, support each other, and try not to take ourselves too
-            seriously along the way. At the end of it all, we're just a group of
+            We spend our days tasting, testing, and reworking — not just
+            cocktails, but the experience itself. Every detail is shaped by the
+            people behind it. We challenge and support each other, and try not
+            to take ourselves too seriously. At the end of it all, we’re just
             people who care deeply about what we do and who we do it for.
           </p>
           <p className={styles.description}>

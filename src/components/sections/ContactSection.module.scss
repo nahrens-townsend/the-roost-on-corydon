@@ -181,9 +181,9 @@
 .right {
   position: relative;
   overflow: hidden;
-  border-top-right-radius: vars.$radius-lg;
-  border-bottom-right-radius: vars.$radius-lg;
-  border-bottom-left-radius: 40%;
+  border-top-right-radius: vars.$radius-sm;
+  border-bottom-right-radius: vars.$radius-sm;
+  border-bottom-left-radius: 30%;
   // Mobile: natural portrait aspect ratio keeps the image visible
   aspect-ratio: 4 / 5;
 
