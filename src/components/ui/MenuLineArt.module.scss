@@ -1,0 +1,497 @@
+// ══════════════════════════════════════════════════════════════════
+//  Menu Line-Art overlay
+// ══════════════════════════════════════════════════════════════════
+
+// ── Keyframes ─────────────────────────────────────────────────────
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(6deg);
+  }
+  75% {
+    transform: rotate(-6deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(5px, 4px);
+  }
+  66% {
+    transform: translate(-3px, 6px);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(6px, -10px) rotate(8deg);
+  }
+}
+
+// ── Layer wrapper ─────────────────────────────────────────────────
+
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+// ── Base piece ────────────────────────────────────────────────────
+
+.piece {
+  position: absolute;
+  line-height: 0; // removes ghost spacing below inline SVGs
+}
+
+// ── Animation utility classes ─────────────────────────────────────
+
+.animFloat {
+  animation: float 7s ease-in-out infinite;
+}
+.animSway {
+  animation: sway 9s ease-in-out infinite;
+}
+.animPulse {
+  animation: pulse 5s ease-in-out infinite;
+}
+.animSpin {
+  animation: spinSlow 28s linear infinite;
+}
+.animNudge {
+  animation: nudge 12s ease-in-out infinite;
+}
+.animDrift {
+  animation: drift 11s ease-in-out infinite;
+}
+
+// ── Color groups ──────────────────────────────────────────────────
+
+$c-green: rgba(42, 100, 65, 0.16);
+$c-golden: rgba(232, 168, 32, 0.14);
+$c-brown: rgba(139, 94, 60, 0.14);
+
+// ── Corner branches ───────────────────────────────────────────────
+
+.branchTL {
+  top: -12px;
+  left: -22px;
+  color: $c-green;
+}
+
+.branchTR {
+  top: -200px;
+  right: -22px;
+  color: $c-green;
+}
+
+.branchBL {
+  bottom: -12px;
+  left: -22px;
+  color: $c-green;
+}
+
+.branchBR {
+  bottom: -12px;
+  right: -22px;
+  color: $c-green;
+}
+
+// ── Top-area pieces ───────────────────────────────────────────────
+
+.martini {
+  top: 72px;
+  left: 25%;
+  color: $c-green;
+  transform: rotate(-12deg);
+}
+
+.flute {
+  top: 30px;
+  right: 20%;
+  color: $c-golden;
+  transform: rotate(10deg);
+}
+
+.citrus1 {
+  top: 120px;
+  left: 4%;
+  color: $c-golden;
+}
+
+.flower1 {
+  top: 168px;
+  right: 5%;
+  color: $c-green;
+}
+
+.asterisk1 {
+  top: 280px;
+  left: 12%;
+  color: $c-golden;
+  transform: rotate(22deg);
+}
+
+// ── Upper-mid pieces ──────────────────────────────────────────────
+
+.mint1 {
+  top: 360px;
+  left: 10%;
+  color: $c-green;
+  transform: rotate(-10deg);
+}
+
+.leaf1 {
+  top: 320px;
+  right: 3%;
+  color: $c-green;
+  transform: rotate(18deg);
+}
+
+.coupe {
+  top: 460px;
+  left: 5%;
+  color: $c-brown;
+  transform: rotate(-8deg);
+}
+
+.hibiscus {
+  top: 440px;
+  right: 2.5%;
+  color: $c-golden;
+}
+
+.swirl1 {
+  top: 560px;
+  left: 9%;
+  color: $c-green;
+}
+
+.lemon {
+  top: 570px;
+  right: 4%;
+  color: $c-golden;
+  transform: rotate(-22deg);
+}
+
+// ── Mid pieces (% from top) ───────────────────────────────────────
+
+.cherry {
+  top: 47%;
+  left: 5%;
+  color: $c-brown;
+  transform: rotate(12deg);
+}
+
+.leaf2 {
+  top: 50%;
+  right: 10%;
+  color: $c-green;
+  transform: rotate(-18deg);
+}
+
+.citrus2 {
+  top: 57%;
+  left: 9%;
+  color: $c-golden;
+}
+
+.sprig {
+  top: 61%;
+  right: 3.5%;
+  color: $c-green;
+  transform: rotate(8deg);
+}
+
+.iceDiamond {
+  top: 66%;
+  left: 14%;
+  color: $c-golden;
+  transform: rotate(20deg);
+}
+
+.flower2 {
+  top: 69%;
+  right: 5%;
+  color: $c-green;
+}
+
+.asterisk2 {
+  top: 72%;
+  left: 16%;
+  color: $c-golden;
+  transform: rotate(-28deg);
+}
+
+// ── Lower pieces ──────────────────────────────────────────────────
+
+.mint2 {
+  top: 76%;
+  left: 10%;
+  color: $c-green;
+  transform: rotate(14deg);
+}
+
+.swirl2 {
+  top: 79%;
+  right: 10%;
+  color: $c-brown;
+  transform: rotate(-15deg);
+}
+
+.olive {
+  top: 82%;
+  left: 13%;
+  color: $c-green;
+  transform: rotate(-6deg);
+}
+
+.leaf3 {
+  top: 85%;
+  right: 12%;
+  color: $c-green;
+  transform: rotate(28deg);
+}
+
+.bubbles {
+  top: 88%;
+  left: 17%;
+  color: $c-golden;
+}
+
+.wavy {
+  top: 90%;
+  right: 14%;
+  color: $c-green;
+  transform: rotate(5deg);
+}
+
+.rocks {
+  top: 55%;
+  right: 12%;
+  color: $c-brown;
+  transform: rotate(8deg);
+}
+
+.sprout {
+  top: 40%;
+  left: 2%;
+  color: $c-green;
+  transform: rotate(-5deg);
+}
+
+.stars {
+  top: 132px;
+  right: 40%;
+  color: $c-golden;
+}
+
+// ── Center / mid-page cocktail scatter ───────────────────────────
+
+.shaker {
+  top: 14%;
+  left: 28%;
+  color: $c-golden;
+  transform: rotate(-8deg);
+}
+
+.barSpoon {
+  top: 8%;
+  left: 62%;
+  color: $c-green;
+  transform: rotate(20deg);
+}
+
+.bottle {
+  top: 26%;
+  left: 16%;
+  color: $c-brown;
+  transform: rotate(-5deg);
+}
+
+.starAnise1 {
+  top: 21%;
+  left: 48%;
+  color: $c-green;
+}
+
+.elderflower {
+  top: 17%;
+  left: 72%;
+  color: $c-golden;
+}
+
+.strawberry {
+  top: 38%;
+  left: 23%;
+  color: $c-brown;
+  transform: rotate(10deg);
+}
+
+.limeHalf {
+  top: 36%;
+  left: 60%;
+  color: $c-golden;
+}
+
+.bubbleTrail {
+  top: 29%;
+  left: 40%;
+  color: $c-golden;
+}
+
+.cinnamon {
+  top: 46%;
+  left: 33%;
+  color: $c-brown;
+  transform: rotate(-15deg);
+}
+
+.muddler {
+  top: 53%;
+  left: 68%;
+  color: $c-green;
+  transform: rotate(12deg);
+}
+
+.feather {
+  top: 62%;
+  left: 45%;
+  color: $c-brown;
+  transform: rotate(-8deg);
+}
+
+.ginger {
+  top: 72%;
+  left: 27%;
+  color: $c-golden;
+  transform: rotate(6deg);
+}
+
+.mandala {
+  top: 57%;
+  left: 41%;
+  color: $c-green;
+}
+
+.bottle2 {
+  top: 78%;
+  left: 63%;
+  color: $c-brown;
+  transform: rotate(6deg);
+}
+
+.starAnise2 {
+  top: 84%;
+  left: 18%;
+  color: $c-golden;
+}
+
+.elderflower2 {
+  top: 91%;
+  left: 38%;
+  color: $c-golden;
+}
+
+.bubbleTrail2 {
+  top: 18%;
+  left: 20%;
+  color: $c-golden;
+}
+
+.asterisk3 {
+  top: 380px;
+  right: 12%;
+  color: $c-golden;
+  transform: rotate(10deg);
+}
+
+.leaf4 {
+  top: 490px;
+  left: 11%;
+  color: $c-green;
+  transform: rotate(22deg);
+}
+
+.flower3 {
+  top: 88%;
+  left: 13%;
+  color: $c-green;
+}
+
+.swirl3 {
+  top: 43%;
+  left: 8%;
+  color: $c-green;
+}
+
+.shaker2 {
+  top: 68%;
+  left: 60%;
+  color: $c-golden;
+  transform: rotate(7deg);
+}
+
+.barSpoon2 {
+  top: 86%;
+  left: 73%;
+  color: $c-green;
+  transform: rotate(-22deg);
+}
+
+.limeHalf2 {
+  top: 78%;
+  left: 45%;
+  color: $c-golden;
+}
+
+.strawberry2 {
+  top: 92%;
+  left: 59%;
+  color: $c-brown;
+  transform: rotate(-8deg);
+}

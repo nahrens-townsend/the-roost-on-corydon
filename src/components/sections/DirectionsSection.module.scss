@@ -1,0 +1,78 @@
+@use "@/styles/variables" as vars;
+@use "@/styles/mixins" as mix;
+
+// ── Section ───────────────────────────────────────────────────────────────────
+
+.directions {
+  padding-top: 0;
+  background-color: vars.$color-background-parchment;
+  padding-block: vars.$space-20 vars.$space-24;
+}
+
+// ── Container ─────────────────────────────────────────────────────────────────
+
+.inner {
+  @include mix.container;
+}
+
+// ── Map + card wrapper (establishes the positioning context) ──────────────────
+
+.mapArea {
+  position: relative;
+}
+
+// ── Google Maps iframe ────────────────────────────────────────────────────────
+
+.mapFrame {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border: none;
+  border-radius: vars.$radius-sm;
+  @include mix.respond-to("lg") {
+    height: 500px;
+  }
+}
+
+// ── Info card ─────────────────────────────────────────────────────────────────
+
+.infoCard {
+  background-color: vars.$color-background-green;
+  border-radius: vars.$radius-sm;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+
+  padding: vars.$space-6 vars.$space-8;
+  box-shadow: vars.$shadow-base;
+
+  @include mix.respond-to("lg") {
+    // Desktop: float over the right portion of the map, centered vertically,
+    // roughly 1/3 the map height (~167px at 500px map height).
+    position: absolute;
+    right: vars.$space-10;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40%;
+    max-width: 400px;
+    box-shadow: vars.$shadow-lg;
+    z-index: 1;
+    border-radius: vars.$radius-sm;
+  }
+}
+
+// ── Card typography ───────────────────────────────────────────────────────────
+
+.address {
+  font-family: vars.$font-family-heading;
+  font-size: vars.$font-size-base;
+  color: vars.$color-white;
+  line-height: vars.$line-height-relaxed;
+  margin: 0 0 vars.$space-4;
+}
+
+.note {
+  font-size: vars.$font-size-base;
+  color: vars.$color-white;
+  line-height: vars.$line-height-relaxed;
+  margin: 0;
+}

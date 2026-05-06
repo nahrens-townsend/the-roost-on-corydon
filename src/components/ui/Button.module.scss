@@ -1,0 +1,99 @@
+@use "@/styles/variables" as vars;
+@use "@/styles/mixins" as mix;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: vars.$space-2;
+  font-family: vars.$font-family-heading;
+  font-weight: vars.$font-weight-regular;
+  letter-spacing: 0.02em;
+  border-radius: vars.$radius-base;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color vars.$transition-fast,
+    color vars.$transition-fast,
+    border-color vars.$transition-fast,
+    box-shadow vars.$transition-fast,
+    transform vars.$transition-fast;
+
+  &:focus-visible {
+    @include mix.focus-ring;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  // --- Sizes ---
+  &--sm {
+    font-size: vars.$font-size-sm;
+    padding: vars.$space-2 vars.$space-4;
+  }
+
+  &--md {
+    font-size: vars.$font-size-base;
+    padding: vars.$space-3 vars.$space-6;
+  }
+
+  &--lg {
+    font-size: vars.$font-size-lg;
+    padding: vars.$space-4 vars.$space-8;
+    border-radius: vars.$radius-base;
+  }
+
+  // --- Variants ---
+  &--primary {
+    background-color: vars.$color-primary;
+    color: vars.$color-white;
+    border-color: vars.$color-primary;
+
+    &:hover {
+      background-color: vars.$color-primary-dark;
+      border-color: vars.$color-primary-dark;
+      box-shadow: vars.$shadow-base;
+      text-decoration: none;
+    }
+  }
+
+  &--accent {
+    background-color: vars.$color-accent;
+    color: vars.$color-text;
+    border-color: vars.$color-accent;
+
+    &:hover {
+      background-color: vars.$color-accent-dark;
+      border-color: vars.$color-accent-dark;
+      color: vars.$color-white;
+      box-shadow: vars.$shadow-base;
+      text-decoration: none;
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: vars.$color-primary;
+    border-color: vars.$color-primary;
+
+    &:hover {
+      background-color: vars.$color-primary;
+      color: vars.$color-white;
+      text-decoration: none;
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: vars.$color-primary;
+    border-color: transparent;
+
+    &:hover {
+      background-color: rgba(vars.$color-primary, 0.08);
+      text-decoration: none;
+    }
+  }
+}

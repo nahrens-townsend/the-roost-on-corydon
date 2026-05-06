@@ -1,0 +1,196 @@
+@use "@/styles/variables" as vars;
+@use "@/styles/mixins" as mix;
+
+// ── Navbar shell ──────────────────────────────────────────────────────────────
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  // Semi-transparent so the hero image bleeds through
+  background: rgba(150, 111, 51, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+
+// ── Inner bar (full-width, no max-width cap) ──────────────────────────────────
+
+.inner {
+  position: relative; // sits above the ::before scrim
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.125rem 3rem;
+}
+
+// ── Logo ──────────────────────────────────────────────────────────────────────
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.88;
+  }
+}
+
+.logoImg {
+  height: 70px;
+  width: auto;
+
+  @include mix.respond-to("lg") {
+    height: 100px;
+  }
+}
+
+// ── Desktop nav (right-aligned) ───────────────────────────────────────────────
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 6rem;
+
+  @include mix.respond-to("lg") {
+    display: flex;
+  }
+}
+
+.navLink {
+  font-family: vars.$font-family-heading;
+  font-size: 0.9375rem;
+  font-weight: vars.$font-weight-medium;
+  color: vars.$color-white;
+  text-decoration: none;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+  transition:
+    color vars.$transition-fast,
+    border-color vars.$transition-fast;
+
+  &:hover {
+    color: #fff;
+    border-bottom-color: vars.$color-white;
+    text-decoration: none;
+  }
+}
+
+.igLink {
+  display: flex;
+  align-items: center;
+  color: vars.$color-white;
+  transition: color vars.$transition-fast;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  &:hover {
+    color: vars.$color-accent;
+  }
+}
+
+// ── Mobile hamburger ──────────────────────────────────────────────────────────
+
+.hamburger {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  @include mix.respond-to("lg") {
+    display: none;
+  }
+
+  span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: vars.$color-white;
+    border-radius: vars.$radius-full;
+    transition:
+      transform vars.$transition-base,
+      opacity vars.$transition-base;
+  }
+}
+
+.hamburgerOpen {
+  span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  span:nth-child(2) {
+    opacity: 0;
+  }
+
+  span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+// ── Mobile slide-down menu ────────────────────────────────────────────────────
+
+.mobileMenu {
+  position: relative;
+  overflow: hidden;
+  max-height: 0;
+  -webkit-backdrop-filter: blur(6px);
+  transition: max-height vars.$transition-slow;
+
+  @include mix.respond-to("lg") {
+    display: none;
+  }
+}
+
+.mobileMenuOpen {
+  max-height: 420px;
+}
+
+.mobileMenuInner {
+  position: relative; // above scrim
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0 1rem;
+}
+
+.mobileLink {
+  display: block;
+  padding: 0.875rem 2rem;
+  font-family: vars.$font-family-heading;
+  font-size: 1.0625rem;
+  font-weight: vars.$font-weight-regular;
+  color: vars.$color-white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+
+  &:hover {
+    color: vars.$color-accent;
+    text-decoration: none;
+  }
+}
+
+.mobileLinkIg {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  svg {
+    width: 19px;
+    height: 19px;
+  }
+}

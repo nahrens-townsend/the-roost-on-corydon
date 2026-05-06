@@ -1,0 +1,204 @@
+@use "@/styles/variables" as vars;
+@use "@/styles/mixins" as mix;
+
+// ── Section ───────────────────────────────────────────────────────────────────
+
+.contact {
+  background-color: vars.$color-background-parchment;
+  padding-block: vars.$space-20 vars.$space-24;
+  border-top: 1px solid vars.$color-border;
+}
+
+// ── Two-column layout ─────────────────────────────────────────────────────────
+
+.inner {
+  @include mix.container;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: vars.$space-16;
+
+  @include mix.respond-to("lg") {
+    grid-template-columns: 1fr 1fr;
+    gap: vars.$space-20;
+  }
+}
+
+// ── Left column ───────────────────────────────────────────────────────────────
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: vars.$space-10;
+}
+
+.title {
+  font-family: vars.$font-family-heading;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: vars.$font-weight-regular;
+  color: vars.$color-text;
+  line-height: vars.$line-height-tight;
+  letter-spacing: -0.01em;
+  margin-bottom: vars.$space-4;
+}
+
+.divider {
+  width: 48px;
+  height: 2px;
+  background-color: vars.$color-primary;
+  margin-bottom: vars.$space-6;
+}
+
+.subtitle {
+  font-family: vars.$font-family-heading;
+  font-size: vars.$font-size-lg;
+  color: vars.$color-secondary;
+  font-style: italic;
+  line-height: vars.$line-height-base;
+  margin-bottom: vars.$space-3;
+}
+
+.description {
+  font-size: vars.$font-size-base;
+  color: vars.$color-text-muted;
+  line-height: vars.$line-height-relaxed;
+  margin: 0;
+}
+
+// ── Form ──────────────────────────────────────────────────────────────────────
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-6;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-2;
+}
+
+.label {
+  font-family: vars.$font-family-heading;
+  font-size: vars.$font-size-base;
+  color: vars.$color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.req {
+  color: vars.$color-secondary;
+}
+
+.input {
+  width: 100%;
+  padding: vars.$space-3 vars.$space-4;
+  font-family: vars.$font-family-base;
+  font-size: vars.$font-size-base;
+  color: vars.$color-text;
+  background-color: vars.$color-white;
+  border: 1px solid vars.$color-border;
+  border-radius: vars.$radius-base;
+  outline: none;
+  transition:
+    border-color vars.$transition-fast,
+    box-shadow vars.$transition-fast;
+  appearance: none;
+
+  &::placeholder {
+    color: vars.$color-text-light;
+    font-size: vars.$font-size-sm;
+  }
+
+  &:focus {
+    border-color: vars.$color-primary;
+    box-shadow: 0 0 0 3px rgba(vars.$color-primary, 0.12);
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: vars.$line-height-relaxed;
+}
+
+.submitBtn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: vars.$space-3 vars.$space-8;
+  font-family: vars.$font-family-heading;
+  font-size: vars.$font-size-base;
+  font-weight: vars.$font-weight-regular;
+  color: vars.$color-white;
+  background-color: vars.$color-primary;
+  border: 2px solid vars.$color-primary;
+  border-radius: vars.$radius-base;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition:
+    background-color vars.$transition-fast,
+    border-color vars.$transition-fast,
+    box-shadow vars.$transition-fast,
+    transform vars.$transition-fast;
+
+  &:hover {
+    background-color: vars.$color-primary-dark;
+    border-color: vars.$color-primary-dark;
+    box-shadow: vars.$shadow-base;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    @include mix.focus-ring;
+  }
+}
+
+.success {
+  padding: vars.$space-6;
+  background-color: rgba(vars.$color-primary, 0.08);
+  border: 1px solid rgba(vars.$color-primary, 0.2);
+  border-radius: vars.$radius-base;
+
+  p {
+    font-family: vars.$font-family-heading;
+    font-size: vars.$font-size-lg;
+    color: vars.$color-primary;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+// ── Right column — image ──────────────────────────────────────────────────────
+
+.right {
+  position: relative;
+  overflow: hidden;
+  border-top-right-radius: vars.$radius-lg;
+  border-bottom-right-radius: vars.$radius-lg;
+  border-bottom-left-radius: 40%;
+  // Mobile: natural portrait aspect ratio keeps the image visible
+  aspect-ratio: 4 / 5;
+
+  @include mix.respond-to("lg") {
+    // Desktop: CSS grid stretches this column to match the left column's height
+    aspect-ratio: auto;
+  }
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}

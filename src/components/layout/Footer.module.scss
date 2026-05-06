@@ -1,0 +1,36 @@
+@use "@/styles/variables" as vars;
+@use "@/styles/mixins" as mix;
+
+.footer {
+  border-top: 1px solid #edebe7;
+  padding-block: vars.$space-5;
+  background: vars.$color-background-parchment;
+}
+
+.inner {
+  @include mix.container;
+  @include mix.flex-between;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: vars.$space-3;
+
+  @include mix.respond-to("md") {
+    @include mix.flex-between;
+  }
+}
+
+.copy,
+.credit {
+  font-size: vars.$font-size-xs;
+  color: vars.$color-text-light;
+}
+
+.credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover {
+    color: vars.$color-text-muted;
+  }
+}
