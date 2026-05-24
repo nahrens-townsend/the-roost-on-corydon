@@ -1,284 +1,119 @@
 @use "@/styles/variables" as vars;
 @use "@/styles/mixins" as mix;
 
+// ── Page shell ────────────────────────────────────────────────────────────────
+
 .page {
-  position: relative;
-  background-color: vars.$color-white;
-  background-image: url("@/assets/images/background-image.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  padding-block: vars.$space-20 vars.$space-24;
+  display: flex;
+  flex-direction: column;
 }
 
-.inner {
-  padding: 0;
-  position: relative;
-  z-index: 1;
+// ── Tab navigation ────────────────────────────────────────────────────────────
 
-  @include mix.respond-to("md") {
-    @include mix.container;
-  }
-}
-
-// ── Header ────────────────────────────────────────────────────────────────────
-
-.header {
-  text-align: center;
-  margin-bottom: vars.$space-16;
-}
-
-.title {
-  font-family: vars.$font-family-heading;
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: vars.$font-weight-regular;
-  color: vars.$color-text;
-  line-height: vars.$line-height-tight;
-  letter-spacing: -0.01em;
-}
-
-.divider {
-  width: 60px;
-  height: 2px;
-  background-color: vars.$color-accent;
-  margin: vars.$space-6 auto 0;
-}
-
-// ── Grid ──────────────────────────────────────────────────────────────────────
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem 8rem;
-
-  @include mix.respond-to("sm") {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include mix.respond-to("lg") {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-// ── Mocktails, Beer & Wine ─────────────────────────────────────────────────────
-
-.drinksSection {
-  background-color: vars.$color-background-parchment;
-  padding-block: vars.$space-16 vars.$space-20;
-  border-top: 1px solid vars.$color-border;
+.tabNav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: vars.$space-2 vars.$space-8;
+  padding: vars.$space-8 0;
   border-bottom: 1px solid vars.$color-border;
 }
 
-.drinksInner {
-  @include mix.container;
-  max-width: 860px;
-}
+.tabBtn {
+  background: none;
+  border: none;
+  padding: vars.$space-1 0;
+  cursor: pointer;
+  font-family: vars.$font-family-mono;
+  font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+  color: vars.$color-text-muted;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  position: relative;
+  transition: color vars.$transition-fast;
 
-.drinksHeader {
-  text-align: center;
-  margin-bottom: vars.$space-12;
-}
-
-.drinksTitle {
-  font-family: vars.$font-family-heading;
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: vars.$font-weight-regular;
-  color: vars.$color-text;
-  line-height: vars.$line-height-tight;
-  letter-spacing: 0.01em;
-}
-
-.drinksDivider {
-  width: 40px;
-  height: 1px;
-  background-color: vars.$color-primary;
-  margin: vars.$space-4 auto 0;
-}
-
-.drinksGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: vars.$space-10;
-
-  @include mix.respond-to("md") {
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: vars.$color-text;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform vars.$transition-base;
   }
-}
 
-.drinksCol {
-  @include mix.respond-to("md") {
-    padding-inline: vars.$space-10;
+  &:hover {
+    color: vars.$color-text;
 
-    &:first-child {
-      padding-left: 0;
+    &::after {
+      transform: scaleX(1);
     }
   }
 }
 
-.drinksColRight {
-  @include mix.respond-to("md") {
-    border-left: 1px solid vars.$color-border;
-    padding-right: 0;
+.tabBtnActive {
+  color: vars.$color-text;
+
+  &::after {
+    transform: scaleX(1);
   }
 }
 
-.drinksSubtitle {
-  font-family: vars.$font-family-heading;
-  font-size: vars.$font-size-xs;
-  font-weight: vars.$font-weight-semibold;
-  color: vars.$color-text-muted;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: vars.$space-4;
-  padding-bottom: vars.$space-3;
-  border-bottom: 1px solid vars.$color-border;
+// ── Menu stage & page-flip animation ──────────────────────────────────────────
+
+@keyframes flipOut {
+  from {
+    transform: perspective(1000px) rotateY(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: perspective(1000px) rotateY(-90deg);
+    opacity: 0.3;
+  }
 }
 
-.drinksSubtitleGap {
-  margin-top: vars.$space-8;
+@keyframes flipIn {
+  from {
+    transform: perspective(1000px) rotateY(90deg);
+    opacity: 0.3;
+  }
+  to {
+    transform: perspective(1000px) rotateY(0deg);
+    opacity: 1;
+  }
 }
 
-.drinksList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.menuStage {
   display: flex;
-  flex-direction: column;
-  gap: vars.$space-3;
+  justify-content: center;
+  padding: vars.$space-8 0;
+  background-color: vars.$color-background-parchment;
 }
 
-.drinksItem {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: vars.$space-4;
-}
-
-.drinksName {
-  font-family: vars.$font-family-heading;
-  font-size: vars.$font-size-2xl;
-  font-weight: vars.$font-weight-regular;
-  color: vars.$color-text;
-}
-
-.drinksPrice {
-  font-size: vars.$font-size-2xl;
-  font-weight: vars.$font-weight-medium;
-  color: vars.$color-text;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.drinksIngredients {
-  font-size: vars.$font-size-sm;
-  color: vars.$color-text-light;
-  line-height: vars.$line-height-relaxed;
-  margin: 0;
-}
-
-// ── Food ──────────────────────────────────────────────────────────────────────
-
-.foodSection {
-  background-color: vars.$color-white;
-  background-image: url("@/assets/images/background-image-2.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  padding-block: vars.$space-20 vars.$space-24;
-  border-top: 1px solid vars.$color-border;
-}
-
-.foodWrapper {
+.menuPage {
   width: 100%;
-  aspect-ratio: 8 / 5;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.foodInner {
-  padding: 0;
-  position: relative;
-  z-index: 1;
+  max-width: 560px;
+  transform-origin: center center;
 
   @include mix.respond-to("md") {
-    @include mix.container;
+    max-width: 680px;
   }
 }
 
-.foodGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem 6rem;
-
-  @include mix.respond-to("sm") {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.flipOut {
+  animation: flipOut 320ms ease-in forwards;
 }
 
-.item {
-  display: flex;
-  flex-direction: column;
+.flipIn {
+  animation: flipIn 320ms ease-out forwards;
 }
 
-.imageWrapper {
+.menuImg {
   width: 100%;
-  aspect-ratio: 5 / 4;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
-  border-radius: vars.$radius-sm;
-  transition: transform vars.$transition-slow;
-
-  .item:hover & {
-    transform: scale(1.03);
-  }
-}
-
-.info {
-  padding-top: vars.$space-4;
-  padding-inline: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: vars.$space-2;
-
-  @include mix.respond-to("md") {
-    padding-inline: 0;
-  }
-}
-
-.nameRow {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: vars.$space-3;
-}
-
-.name {
-  font-family: vars.$font-family-heading;
-  font-size: vars.$font-size-2xl;
-  font-weight: vars.$font-weight-regular;
-  color: vars.$color-text;
-  line-height: vars.$line-height-tight;
-}
-
-.price {
-  font-size: vars.$font-size-2xl;
-  font-weight: vars.$font-weight-medium;
-  color: vars.$color-text;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.ingredients {
-  font-size: vars.$font-size-lg;
-  color: vars.$color-text-light;
-  line-height: vars.$line-height-relaxed;
-  margin: 0;
+  box-shadow: vars.$shadow-lg;
 }

@@ -26,13 +26,9 @@ $color-accent-dark: #c48010;
 $color-white: #ffffff;
 $color-background: #f7f7f7;
 $color-background-alt: #fbfaf7;
-$color-background-dark: #966f33;
 $color-background-green: #636f34;
-$color-background-brown: #966f33;
-$color-background-pink: #fad1cc;
 $color-background-parchment: #fdf9eb;
 $color-border: #d5cfc4;
-$color-shadow: rgba(0, 0, 0, 0.08);
 
 // Text
 $color-text: #1e1e1e;
@@ -95,7 +91,7 @@ $space-24: 6rem; //  96px
 // -----------------------------------------------------------------------------
 
 $container-max-width: 1400px;
-$container-padding: $space-6;
+$container-padding: $space-4;
 
 // -----------------------------------------------------------------------------
 // Borders & Radius
@@ -112,7 +108,6 @@ $radius-full: 9999px;
 // Shadows
 // -----------------------------------------------------------------------------
 
-$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
 $shadow-base: 0 4px 12px rgba(0, 0, 0, 0.1);
 $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 

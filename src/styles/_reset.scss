@@ -1,4 +1,5 @@
 // Minimal CSS reset + sensible defaults
+@use "@/styles/variables" as vars;
 
 *,
 *::before,
@@ -26,9 +27,10 @@ body {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-text);
-  background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: vars.$color-background-parchment;
+  padding: vars.$container-padding;
 }
 
 img,
@@ -57,7 +59,12 @@ h6 {
   overflow-wrap: break-word;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-family-heading);
   line-height: 1.25;
 }
@@ -86,4 +93,8 @@ button {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+main {
+  flex: 1;
 }

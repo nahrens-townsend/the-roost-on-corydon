@@ -1,120 +1,149 @@
-import { useRef, useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Home.module.scss";
-import HeroSlider from "@/components/sections/HeroSlider";
-import cocktail6 from "@/assets/images/orange.webp";
-import cocktail7 from "@/assets/images/our-story-flower.webp";
-import rosemaryImg from "@/assets/images/rosemary.svg";
 
-function useScrollReveal<T extends HTMLElement>(threshold = 0.25) {
-  const ref = useRef<T>(null);
-  const [visible, setVisible] = useState(false);
+const CONTACT_LINKS = [
+  { label: "Jobs", href: "/visit-us" },
+  { label: "Contact", href: "/visit-us" },
+  { label: "Instagram", href: "https://www.instagram.com/theroostwpg/" },
+];
+
+const HERO_IMAGES = [
+  {
+    url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80",
+    alt: "Beautifully plated restaurant dish",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+    alt: "House-made pasta",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80",
+    alt: "Seasonal ingredients and produce",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+    alt: "Fresh local cuisine",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+    alt: "House-made pasta",
+  },
+];
+
+const SLIDE_INTERVAL = 4000;
+const FADE_DURATION = 1000;
+
+function HeroSlider() {
+  const [{ active, prev }, setSlide] = useState<{
+    active: number;
+    prev: number | null;
+  }>({ active: 0, prev: null });
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(el);
-        }
-      },
-      { threshold },
+    const interval = setInterval(() => {
+      setSlide((s) => ({
+        prev: s.active,
+        active: (s.active + 1) % HERO_IMAGES.length,
+      }));
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (prev === null) return;
+    const timeout = setTimeout(
+      () => setSlide((s) => ({ ...s, prev: null })),
+      FADE_DURATION + 200,
     );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [threshold]);
-
-  return { ref, visible };
-}
-
-export default function Home() {
-  const { ref: phraseRef1, visible: pv1 } =
-    useScrollReveal<HTMLParagraphElement>();
-  const { ref: phraseRef2, visible: pv2 } =
-    useScrollReveal<HTMLParagraphElement>();
-  const { ref: phraseRef3, visible: pv3 } =
-    useScrollReveal<HTMLParagraphElement>();
+    return () => clearTimeout(timeout);
+  }, [prev]);
 
   return (
     <>
-      {/* ── Hero ── */}
-      <HeroSlider id="home" />
-
-      {/* ── Story Reveal ── */}
-      <section className={styles.storyReveal}>
+      {prev !== null && (
         <img
-          src={cocktail7}
-          alt=""
-          aria-hidden="true"
-          className={`${styles.storyIllus} ${styles.storyIllusFlower}${pv2 ? ` ${styles.illusVisible}` : ""}`}
+          key={`p${prev}`}
+          src={HERO_IMAGES[prev].url}
+          alt={HERO_IMAGES[prev].alt}
+          className={`${styles.sliderImg} ${styles.sliderImgExit}`}
         />
-
-        <div className={styles.storyInner}>
-          <p
-            ref={phraseRef1}
-            className={`${styles.storyPhrase}${pv1 ? ` ${styles.phraseVisible}` : ""}`}
-          >
-            just a couple of kids
-          </p>
-          <p
-            ref={phraseRef2}
-            className={`${styles.storyPhrase} ${styles.storyPhrase2}${pv2 ? ` ${styles.phraseVisible}` : ""}`}
-          >
-            making treats
-          </p>
-          <p
-            ref={phraseRef3}
-            className={`${styles.storyPhrase} ${styles.storyPhrase3}${pv3 ? ` ${styles.phraseVisible}` : ""}`}
-          >
-            in a treehouse...
-          </p>
-        </div>
-      </section>
-
-      {/* ── Info & Hours ── */}
-      <section className={styles.infoSection}>
-        <img
-          src={rosemaryImg}
-          alt=""
-          aria-hidden="true"
-          className={styles.rosemaryDivider}
-        />
-        <img
-          src={cocktail6}
-          alt=""
-          aria-hidden="true"
-          className={`${styles.storyIllus} ${styles.storyIllusOrange}${pv2 ? ` ${styles.illusVisible}` : ""}`}
-        />
-        <div className={styles.infoCard}>
-          <h2 className={styles.infoTitle}>The Roost on Corydon</h2>
-          <p className={styles.infoDesc}>
-            Tucked upstairs in a hundred-year-old house, The Roost is a cocktail
-            bar at heart — a little moody, a little playful, and always
-            evolving. Our menus shift with the seasons, shaped by curiosity and
-            a habit of making things from scratch. Over the years we've created
-            hundreds of original cocktails, each one a small experiment in
-            flavour, balance, and a bit of whimsy.
-          </p>
-          <p className={styles.infoHoursLabel}>Hours</p>
-          <dl className={styles.infoHours}>
-            {[
-              { day: "Tuesday", time: "5–10 p.m." },
-              { day: "Wednesday", time: "5 p.m.–12 a.m." },
-              { day: "Thursday", time: "5 p.m.–12 a.m." },
-              { day: "Friday", time: "5 p.m.–2 a.m." },
-              { day: "Saturday", time: "5 p.m.–2 a.m." },
-              { day: "Sunday", time: "5 p.m.–12 a.m." },
-              { day: "Monday", time: "5 p.m.–12 a.m." },
-            ].map(({ day, time }) => (
-              <div key={day} className={styles.infoHoursRow}>
-                <dt>{day}</dt>
-                <dd>{time}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
+      )}
+      <img
+        key={`a${active}`}
+        src={HERO_IMAGES[active].url}
+        alt={HERO_IMAGES[active].alt}
+        className={`${styles.sliderImg} ${styles.sliderImgEnter}`}
+      />
     </>
+  );
+}
+
+function TextSlide({ children }: { children: string }) {
+  return (
+    <span className={styles.textSlide}>
+      <span>{children}</span>
+      <span className={styles.textSlideClone} aria-hidden="true">
+        {children}
+      </span>
+    </span>
+  );
+}
+
+export default function Home() {
+  return (
+    <div className={styles.page}>
+      {/* Hero image — mobile only */}
+      <div className={styles.mobileHero}>
+        <div className={styles.imageAspect}>
+          <HeroSlider />
+        </div>
+      </div>
+
+      {/* Description */}
+      <div className={styles.description}>
+        <p>
+          At heart, The Roost is a cozy neighbourhood cocktail bar serving
+          original drinks, seasonal plates, and local favourites in a warm,
+          community-driven space. Come cozy up, share good food and drinks, and
+          make yourself at home.
+        </p>
+      </div>
+
+      {/* Info row */}
+      <div className={styles.infoRow}>
+        <div className={styles.infoAddress}>
+          <a
+            href="https://maps.app.goo.gl/example"
+            target="_blank"
+            rel="noreferrer"
+          >
+            123 Corydon Avenue,&nbsp;Winnipeg&nbsp;(MB)
+          </a>
+        </div>
+
+        <div className={styles.infoHours}>
+          <p>
+            Sunday to Thursday
+            <br />
+            17h&nbsp;—&nbsp;00h00
+          </p>
+          <p>
+            Friday to Saturday
+            <br />
+            17h&nbsp;—&nbsp;02h00
+          </p>
+        </div>
+
+        <div className={styles.infoLinks}>
+          <div className={styles.linkStack}>
+            {CONTACT_LINKS.map(({ label, href }) => (
+              <a key={label} href={href} className={styles.contactLink}>
+                <TextSlide>{label}</TextSlide>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

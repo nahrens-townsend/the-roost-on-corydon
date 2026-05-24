@@ -4,5 +4,5 @@
 // Import order matters: variables first (registers CSS custom properties),
 // then reset (uses those properties), then component-level styles.
 
-@use 'variables';   // registers :root CSS custom properties
-@use 'reset';       // base reset + sensible defaults
+@use "variables"; // registers :root CSS custom properties
+@use "reset"; // base reset + sensible defaults

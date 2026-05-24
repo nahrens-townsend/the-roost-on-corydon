@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main style={{ paddingTop: "var(--navbar-height, 80px)" }}>
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/visit-us" element={<Contact />} />

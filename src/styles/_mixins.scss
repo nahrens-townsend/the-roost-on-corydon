@@ -63,3 +63,16 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+// Text-slide hover animation (used by Navbar and Home contact links)
+@mixin text-slide-hover {
+  &:hover {
+    .textSlide > span:first-child {
+      transform: translateY(-100%);
+    }
+
+    .textSlideClone {
+      transform: translateY(0);
+    }
+  }
+}
