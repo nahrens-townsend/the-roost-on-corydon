@@ -6,11 +6,11 @@
 .contact {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: vars.$color-white;
+  background-color: vars.$color-background-parchment;
+  padding: vars.$space-4 0;
 
   @include mix.respond-to("lg") {
     grid-template-columns: 1fr 1fr;
-    min-height: 85vh;
   }
 }
 
@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   gap: vars.$space-8;
-  padding: vars.$space-8 0 vars.$space-8 0;
+  padding: 0 vars.$space-4;
   text-align: center;
   background-color: vars.$color-background-parchment;
   order: 1;
@@ -30,7 +30,6 @@
   @include mix.respond-to("lg") {
     align-items: flex-start;
     text-align: left;
-    padding: vars.$space-20 vars.$space-16;
   }
 }
 
@@ -47,14 +46,13 @@
 
 .subtitle {
   font-family: vars.$font-family-heading;
-  font-size: vars.$font-size-lg;
   color: vars.$color-primary;
   line-height: vars.$line-height-base;
   margin-bottom: vars.$space-3;
+  font-size: 1.375rem;
 }
 
 .description {
-  font-size: vars.$font-size-base;
   color: vars.$color-text-muted;
   line-height: vars.$line-height-relaxed;
   margin: 0;
@@ -65,7 +63,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: vars.$space-6;
+  gap: vars.$space-4;
   width: 100%;
 }
 
@@ -77,8 +75,7 @@
 }
 
 .label {
-  font-family: vars.$font-family-mono;
-  font-size: vars.$font-size-sm;
+  font-family: vars.$font-family-base;
   color: vars.$color-text-muted;
   text-transform: lowercase;
   letter-spacing: 0.06em;
@@ -87,13 +84,14 @@
 
 .req {
   color: vars.$color-secondary;
+
+  font-size: vars.$font-size-xs;
 }
 
 .input {
   width: 100%;
-  padding: vars.$space-3 0;
+  padding: vars.$space-1 0;
   font-family: vars.$font-family-base;
-  font-size: vars.$font-size-base;
   color: vars.$color-text;
   background-color: transparent;
   border: none;
@@ -124,7 +122,7 @@
   align-items: center;
   justify-content: center;
   padding: vars.$space-3 vars.$space-8;
-  font-family: vars.$font-family-mono;
+  font-family: vars.$font-family-base;
   font-size: vars.$font-size-sm;
   font-weight: vars.$font-weight-regular;
   color: vars.$color-text;
@@ -158,7 +156,7 @@
   border: 1px solid vars.$color-border;
 
   p {
-    font-family: vars.$font-family-mono;
+    font-family: vars.$font-family-base;
     font-size: vars.$font-size-base;
     color: vars.$color-text-muted;
     margin: 0;

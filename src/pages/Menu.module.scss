@@ -24,8 +24,8 @@
   border: none;
   padding: vars.$space-1 0;
   cursor: pointer;
-  font-family: vars.$font-family-mono;
-  font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+  font-family: vars.$font-family-base;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   color: vars.$color-text-muted;
   text-transform: lowercase;
   letter-spacing: 0.06em;
@@ -89,18 +89,14 @@
 .menuStage {
   display: flex;
   justify-content: center;
-  padding: vars.$space-8 0;
+  padding: vars.$space-4 0;
   background-color: vars.$color-background-parchment;
 }
 
 .menuPage {
   width: 100%;
-  max-width: 560px;
+  max-width: 650px;
   transform-origin: center center;
-
-  @include mix.respond-to("md") {
-    max-width: 680px;
-  }
 }
 
 .flipOut {

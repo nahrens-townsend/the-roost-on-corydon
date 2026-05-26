@@ -5,6 +5,7 @@ import Home from "@/pages/Home";
 import Contact from "@/pages/Contact";
 import Story from "@/pages/Story";
 import Menu from "@/pages/Menu";
+import Jobs from "@/pages/Jobs";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/visit-us" element={<Contact />} />
           <Route path="/story" element={<Story />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/jobs" element={<Jobs />} />
         </Routes>
       </main>
       <Footer />

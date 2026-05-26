@@ -9,12 +9,6 @@
   padding-top: 0;
 }
 
-// ── Container ─────────────────────────────────────────────────────────────────
-
-.inner {
-  @include mix.container;
-}
-
 // ── Map + card wrapper (establishes the positioning context) ──────────────────
 
 .mapArea {
@@ -26,12 +20,9 @@
 .mapFrame {
   display: block;
   width: 100%;
-  height: 320px;
+  height: 250px;
   border: none;
   border-radius: vars.$radius-sm;
-  @include mix.respond-to("lg") {
-    height: 500px;
-  }
 }
 
 // ── Info card ─────────────────────────────────────────────────────────────────
@@ -66,13 +57,13 @@
   font-family: vars.$font-family-heading;
   font-size: vars.$font-size-base;
   color: vars.$color-white;
-  line-height: vars.$line-height-relaxed;
+  line-height: vars.$line-height-tight;
   margin: 0 0 vars.$space-4;
 }
 
 .note {
-  font-size: vars.$font-size-base;
+  font-size: vars.$font-size-xl;
   color: vars.$color-white;
-  line-height: vars.$line-height-relaxed;
+  line-height: vars.$line-height-tight;
   margin: 0;
 }

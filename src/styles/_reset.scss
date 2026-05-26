@@ -24,13 +24,15 @@ html {
 
 body {
   font-family: var(--font-family-base);
-  font-size: var(--font-size-base);
+  font-size: vars.$font-size-lg;
   line-height: var(--line-height-base);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: vars.$color-background-parchment;
   padding: vars.$container-padding;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
 }
 
 img,

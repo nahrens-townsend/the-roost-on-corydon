@@ -7,6 +7,8 @@
 // Color Palette
 // -----------------------------------------------------------------------------
 
+@import url("https://googleapis.com");
+
 // Primary — Deep Forest Green
 $color-primary: #636f34;
 $color-primary-light: #3a8a59;
@@ -41,12 +43,28 @@ $color-error: #c0392b;
 $color-warning: #e8a820;
 
 // -----------------------------------------------------------------------------
+// Font Face
+// -----------------------------------------------------------------------------
+
+@font-face {
+  font-family: "IMFellEnglishSC";
+  src: url("../assets/fonts/IMFellEnglishSC-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CormorantUnicase";
+  src: url("../assets/fonts/CormorantUnicase-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+// -----------------------------------------------------------------------------
 // Typography
 // -----------------------------------------------------------------------------
 
-$font-family-base: Georgia, "Marcellus", serif;
-$font-family-heading: "Marcellus", "Times New Roman", serif;
-$font-family-mono: "Courier New", Courier, monospace;
+$font-family-base: "IMFellEnglishSC", "Marcellus", serif;
+$font-family-heading: "CormorantUnicase", "Times New Roman", serif;
 
 $font-size-xs: 0.75rem; //  12px
 $font-size-sm: 0.875rem; //  14px
@@ -90,7 +108,7 @@ $space-24: 6rem; //  96px
 // Layout
 // -----------------------------------------------------------------------------
 
-$container-max-width: 1400px;
+$container-max-width: 1200px;
 $container-padding: $space-4;
 
 // -----------------------------------------------------------------------------
@@ -109,7 +127,7 @@ $radius-full: 9999px;
 // -----------------------------------------------------------------------------
 
 $shadow-base: 0 4px 12px rgba(0, 0, 0, 0.1);
-$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+$shadow-lg: 10px 8px 24px rgba(0, 0, 0, 0.3);
 
 // -----------------------------------------------------------------------------
 // Transitions

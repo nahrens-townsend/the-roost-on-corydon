@@ -6,11 +6,12 @@
 .storySection {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: vars.$color-white;
+  background-color: vars.$color-background-parchment;
+  padding-top: vars.$space-4;
 
   @include mix.respond-to("lg") {
     grid-template-columns: 1fr 1fr;
-    min-height: 85vh;
+    min-height: 65vh;
   }
 }
 
@@ -69,11 +70,11 @@
 .teamSection {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: vars.$color-white;
+  padding-bottom: vars.$space-4;
 
   @include mix.respond-to("lg") {
     grid-template-columns: 1fr 1fr;
-    min-height: 85vh;
+    min-height: 65vh;
   }
 }
 
@@ -109,7 +110,7 @@
     display: block;
     order: 2;
     min-height: 0;
-    max-height: 85vh;
+    max-height: 65vh;
   }
 }
 
