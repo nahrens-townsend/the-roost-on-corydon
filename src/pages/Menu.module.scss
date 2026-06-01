@@ -15,7 +15,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: vars.$space-2 vars.$space-8;
-  padding: vars.$space-8 0;
+  padding: vars.$space-4 0;
   border-bottom: 1px solid vars.$color-border;
 }
 
@@ -25,7 +25,7 @@
   padding: vars.$space-1 0;
   cursor: pointer;
   font-family: vars.$font-family-base;
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(0.875rem, 2vw, 1rem);
   color: vars.$color-text-muted;
   text-transform: lowercase;
   letter-spacing: 0.06em;
@@ -71,14 +71,14 @@
   }
   to {
     transform: perspective(1000px) rotateY(-90deg);
-    opacity: 0.3;
+    opacity: 0;
   }
 }
 
 @keyframes flipIn {
   from {
     transform: perspective(1000px) rotateY(90deg);
-    opacity: 0.3;
+    opacity: 0;
   }
   to {
     transform: perspective(1000px) rotateY(0deg);
@@ -95,8 +95,11 @@
 
 .menuPage {
   width: 100%;
-  max-width: 650px;
   transform-origin: center center;
+
+  @media (min-width: vars.$bp-lg) {
+    max-width: 80%;
+  }
 }
 
 .flipOut {
@@ -108,8 +111,14 @@
 }
 
 .menuImg {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
+  max-height: 600px;
   display: block;
-  box-shadow: vars.$shadow-lg;
+  box-shadow: vars.$shadow-md;
+  margin: 0 auto;
+
+  @media (min-width: vars.$bp-md) {
+    max-height: 720px;
+  }
 }

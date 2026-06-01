@@ -1,22 +1,41 @@
 import { useState, useEffect } from "react";
 import styles from "./Menu.module.scss";
-import menuImg from "@/assets/images/roost-menu-1.webp";
+import menuImg1 from "@/assets/images/menu/2026 spring.png";
+import menuImg2 from "@/assets/images/menu/page 1.png";
+import menuImg3 from "@/assets/images/menu/page 2.png";
+import menuImg4 from "@/assets/images/menu/page 3.png";
+import menuImg5 from "@/assets/images/menu/page 4.png";
+import menuImg6 from "@/assets/images/menu/page 5.png";
+import menuImg7 from "@/assets/images/menu/page 6.png";
 
-type TabKey = "food" | "cocktails" | "wine" | "dessert";
+type TabKey =
+  | "food"
+  | "nonAlcoholic"
+  | "coolAndRefreshing"
+  | "tropicalOpulence"
+  | "stiffAndStirred"
+  | "wine"
+  | "beer";
 
 const TABS: { key: TabKey; label: string }[] = [
-  { key: "food", label: "food" },
-  { key: "cocktails", label: "cocktails, beer and cider" },
-  { key: "wine", label: "wine" },
-  { key: "dessert", label: "dessert" },
+  { key: "food", label: "Food" },
+  { key: "nonAlcoholic", label: "Non-Alcoholic" },
+  { key: "coolAndRefreshing", label: "Cool & Refreshing" },
+  { key: "tropicalOpulence", label: "Served Up & Sour / Tropical Opulence" },
+  { key: "stiffAndStirred", label: "Stiff & Stirred / Bright & Bubbly" },
+  { key: "wine", label: "Wine" },
+  { key: "beer", label: "Beer" },
 ];
 
 // All sections use the same image for now
 const MENU_IMAGES: Record<TabKey, string> = {
-  food: menuImg,
-  cocktails: menuImg,
-  wine: menuImg,
-  dessert: menuImg,
+  food: menuImg1,
+  nonAlcoholic: menuImg2,
+  coolAndRefreshing: menuImg3,
+  tropicalOpulence: menuImg4,
+  stiffAndStirred: menuImg5,
+  wine: menuImg6,
+  beer: menuImg7,
 };
 
 const FLIP_MS = 320;

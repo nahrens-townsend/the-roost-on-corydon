@@ -14,10 +14,6 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: vars.$space-3;
-
-  @include mix.respond-to("md") {
-    @include mix.flex-between;
-  }
 }
 
 .credit {

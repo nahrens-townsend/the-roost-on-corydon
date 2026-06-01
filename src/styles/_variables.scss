@@ -29,7 +29,7 @@ $color-white: #ffffff;
 $color-background: #f7f7f7;
 $color-background-alt: #fbfaf7;
 $color-background-green: #636f34;
-$color-background-parchment: #fdf9eb;
+$color-background-parchment: #f9f6df;
 $color-border: #d5cfc4;
 
 // Text
@@ -127,6 +127,7 @@ $radius-full: 9999px;
 // -----------------------------------------------------------------------------
 
 $shadow-base: 0 4px 12px rgba(0, 0, 0, 0.1);
+$shadow-md: 1px 8px 24px rgba(0, 0, 0, 0.3);
 $shadow-lg: 10px 8px 24px rgba(0, 0, 0, 0.3);
 
 // -----------------------------------------------------------------------------
