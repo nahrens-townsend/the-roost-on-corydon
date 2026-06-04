@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
 import styles from "./Home.module.scss";
+import homeImg1 from "@/assets/images/home/1.webp";
+import homeImg2 from "@/assets/images/home/2.webp";
+import homeImg3 from "@/assets/images/home/3.webp";
+import homeImg4 from "@/assets/images/home/4.webp";
+import homeImg5 from "@/assets/images/home/5.webp";
 
 const CONTACT_LINKS = [
   { label: "Jobs", href: "/jobs" },
@@ -9,23 +14,23 @@ const CONTACT_LINKS = [
 
 const HERO_IMAGES = [
   {
-    url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80",
+    url: homeImg1,
     alt: "Beautifully plated restaurant dish",
   },
   {
-    url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+    url: homeImg2,
     alt: "House-made pasta",
   },
   {
-    url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80",
+    url: homeImg3,
     alt: "Seasonal ingredients and produce",
   },
   {
-    url: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+    url: homeImg4,
     alt: "Fresh local cuisine",
   },
   {
-    url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+    url: homeImg5,
     alt: "House-made pasta",
   },
 ];

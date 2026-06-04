@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "./Menu.module.scss";
-import menuImg1 from "@/assets/images/menu/2026 spring.png";
-import menuImg2 from "@/assets/images/menu/page 1.png";
-import menuImg3 from "@/assets/images/menu/page 2.png";
-import menuImg4 from "@/assets/images/menu/page 3.png";
-import menuImg5 from "@/assets/images/menu/page 4.png";
-import menuImg6 from "@/assets/images/menu/page 5.png";
-import menuImg7 from "@/assets/images/menu/page 6.png";
+import menuImg1 from "@/assets/images/menu/2026 spring.webp";
+import menuImg2 from "@/assets/images/menu/page 1.webp";
+import menuImg3 from "@/assets/images/menu/page 2.webp";
+import menuImg4 from "@/assets/images/menu/page 3.webp";
+import menuImg5 from "@/assets/images/menu/page 4.webp";
+import menuImg6 from "@/assets/images/menu/page 5.webp";
+import menuImg7 from "@/assets/images/menu/page 6.webp";
 
 type TabKey =
   | "food"
