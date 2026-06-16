@@ -1,4 +1,5 @@
 import styles from "./Navbar.module.scss";
+import logo from "../../assets/images/the-roost-logo-elsa-transparent.webp";
 
 const NAV_ITEMS = [
   { label: "Menu", href: "/menu" },
@@ -21,8 +22,11 @@ export default function Navbar() {
     <header>
       {/* Brand logo */}
       <div className={styles.logoBanner}>
-        <a href="/" className={styles.logoLink} aria-label="The Roost — Home">
+        {/* <a href="/" className={styles.logoLink} aria-label="The Roost — Home">
           <h1 className={styles.logo}>The Roost</h1>
+        </a> */}
+        <a href="/" className={styles.logoLink} aria-label="The Roost — Home">
+          <img src={logo} className={styles.logo} alt="The Roost" />
         </a>
       </div>
 

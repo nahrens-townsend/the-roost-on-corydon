@@ -118,11 +118,11 @@ export default function Home() {
       <div className={styles.infoRow}>
         <div className={styles.infoAddress}>
           <a
-            href="https://maps.app.goo.gl/example"
+            href="https://maps.app.goo.gl/UPpokBLDfTZfvwiD8"
             target="_blank"
             rel="noreferrer"
           >
-            123 Corydon Avenue,&nbsp;Winnipeg&nbsp;(MB)
+            651-A Corydon Avenue,&nbsp;Winnipeg&nbsp;(MB)
           </a>
         </div>
 

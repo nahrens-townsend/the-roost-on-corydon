@@ -22,7 +22,6 @@
   align-items: center;
   justify-content: center;
   gap: vars.$space-8;
-  padding: 0 vars.$space-4;
   text-align: center;
   background-color: vars.$color-background-parchment;
   order: 1;
@@ -30,6 +29,7 @@
   @include mix.respond-to("lg") {
     align-items: flex-start;
     text-align: left;
+    padding: 0 vars.$space-4;
   }
 }
 

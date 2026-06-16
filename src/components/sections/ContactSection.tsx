@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./ContactSection.module.scss";
-import contactImg from "@/assets/images/contact-img.png";
+import contactImg from "@/assets/images/article-2.webp";
 
 interface FormState {
   name: string;
@@ -39,7 +39,7 @@ export default function ContactSection() {
           </p>
           <p className={styles.description}>
             To make a reservation, give us a call! To inquire about a private
-            party, or send a resume, please fill out the form below.
+            party please fill out the form below.
           </p>
         </header>
 
