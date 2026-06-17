@@ -81,6 +81,8 @@ export default function ContactSection() {
             name="cta-form"
             method="POST"
             data-netlify="true"
+            netlify-honeypot="bot-field"
+            data-netlify-recaptcha="true"
           >
             <div className={styles.field}>
               <label className={styles.label} htmlFor="c-name">
