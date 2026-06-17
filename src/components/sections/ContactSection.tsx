@@ -13,20 +13,31 @@ const empty: FormState = { name: "", email: "", phone: "", message: "" };
 
 export default function ContactSection() {
   const [form, setForm] = useState<FormState>(empty);
-  const [submitted, setSubmitted] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) {
+  const encode = (data: any) =>
+    Object.keys(data)
+      .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
+      .join("&");
+
+  const handleChange = (e: any) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    // TODO: wire up to backend / email service
-    setSubmitted(true);
-    setForm(empty);
-  }
+    setSubmitting(true);
+    setError(false);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "cta-form", ...form }),
+    })
+      .then(() => setSent(true))
+      .catch(() => setError(true))
+      .finally(() => setSubmitting(false));
+  };
 
   return (
     <section className={styles.contact}>
@@ -43,12 +54,20 @@ export default function ContactSection() {
           </p>
         </header>
 
-        {submitted ? (
+        {sent ? (
           <div className={styles.success} role="status">
             <p>Thank you — we'll be in touch soon!</p>
           </div>
         ) : (
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <form
+            className={styles.form}
+            onSubmit={handleSubmit}
+            name="cta-form"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            data-netlify-recaptcha="true"
+          >
             <div className={styles.field}>
               <label className={styles.label} htmlFor="c-name">
                 Name{" "}
@@ -128,9 +147,18 @@ export default function ContactSection() {
               />
             </div>
 
-            <button type="submit" className={styles.submitBtn}>
-              Send Message
+            <button
+              type="submit"
+              className={styles.submitBtn}
+              disabled={submitting}
+            >
+              {submitting ? "Sending…" : "Send Message"}
             </button>
+            {error && (
+              <p className="cta-form__error">
+                Something went wrong — please try again or email us directly.
+              </p>
+            )}
           </form>
         )}
       </div>
