@@ -52,6 +52,22 @@ export default function ContactSection() {
             To make a reservation, give us a call! To inquire about a private
             party please fill out the form below.
           </p>
+          <p>
+            Email:{" "}
+            <a
+              className={styles.email}
+              href="mailto:theroostwpg@gmail.com"
+              target="_blank"
+            >
+              theroostwpg@gmail.com
+            </a>
+          </p>
+          <p>
+            Phone:{" "}
+            <a className={styles.phone} href="tel:+12044149313">
+              (204) 414-9313
+            </a>
+          </p>
         </header>
 
         {sent ? (
@@ -65,8 +81,6 @@ export default function ContactSection() {
             name="cta-form"
             method="POST"
             data-netlify="true"
-            netlify-honeypot="bot-field"
-            data-netlify-recaptcha="true"
           >
             <div className={styles.field}>
               <label className={styles.label} htmlFor="c-name">
