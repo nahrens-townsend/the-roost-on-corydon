@@ -1,8 +1,6 @@
 import styles from "./Story.module.scss";
 import elsaImg from "@/assets/images/elsa-+story.webp";
 import flowerImg from "@/assets/images/our-story-flower.webp";
-import storyImg2 from "@/assets/images/story-img-2.png";
-import orangeImg from "@/assets/images/orange.webp";
 
 export default function Story() {
   return (
