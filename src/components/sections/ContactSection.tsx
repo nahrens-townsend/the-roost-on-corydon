@@ -48,10 +48,6 @@ export default function ContactSection() {
           <p className={styles.subtitle}>
             We accept reservations throughout the fall and winter seasons.
           </p>
-          <p className={styles.description}>
-            To make a reservation, give us a call! To inquire about a private
-            party please fill out the form below.
-          </p>
           <p>
             Email:{" "}
             <a
@@ -67,6 +63,10 @@ export default function ContactSection() {
             <a className={styles.phone} href="tel:+12044149313">
               (204) 414-9313
             </a>
+          </p>
+          <p className={styles.description}>
+            To make a reservation, give us a call! To inquire about a private
+            party please fill out the form below.
           </p>
         </header>
 

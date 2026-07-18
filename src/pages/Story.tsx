@@ -45,41 +45,6 @@ export default function Story() {
         </div>
       </section>
 
-      {/* ── Team Section ── */}
-      <section className={styles.teamSection}>
-        <div className={styles.teamLeftContent}>
-          <img
-            src={orangeImg}
-            alt=""
-            aria-hidden="true"
-            className={styles.orangeImage}
-            loading="lazy"
-          />
-          <p className={styles.description}>
-            <strong>Our team is the heartbeat behind the bar</strong> — a small,
-            ever-evolving group of curious minds, kind souls, and quietly
-            obsessive makers. We're bartenders, hosts, cooks, artists, and
-            listeners, all driven by the same instinct: to take care of people.
-          </p>
-          <p className={styles.description}>
-            We spend our days tasting, testing, and reworking — not just
-            cocktails, but the experience itself. Every detail is shaped by the
-            people behind it. We challenge and support each other, and try not
-            to take ourselves too seriously. At the end of it all, we’re just
-            people who care deeply about what we do and who we do it for.
-          </p>
-          <p className={styles.description}>
-            <strong>
-              Pull up a chair, say hello — we're glad you're here.
-            </strong>
-          </p>
-        </div>
-
-        <div className={styles.teamRightImage}>
-          <img src={storyImg2} alt="The Roost team" loading="lazy" />
-        </div>
-      </section>
-
       {/* ── In The News ── */}
       {/* <section className={styles.newsSection}>
         <img
