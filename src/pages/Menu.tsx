@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Menu.module.scss";
-import menuImg1 from "@/assets/images/menu/2026 spring.webp";
+import menuImg1 from "@/assets/images/menu/FOOD AUG 5.png";
 import menuImg2 from "@/assets/images/menu/page 1.webp";
 import menuImg3 from "@/assets/images/menu/page 2.webp";
 import menuImg4 from "@/assets/images/menu/page 3.webp";
